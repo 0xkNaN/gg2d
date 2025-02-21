@@ -5,9 +5,22 @@
 
 class Game
 {
-public:
+private:
   Game() {}
+
+  static Game *s_pInstance;
+
+  bool m_bRunning;
+
+public:
   ~Game() {}
+
+  static Game *Instance()
+  {
+    if (s_pInstance == 0)
+      s_pInstance = new Game();
+    return s_pInstance;
+  }
 
   bool init(const char *title, int windowW, int windowH);
 
@@ -15,11 +28,11 @@ public:
   void update();
   void render();
 
-  void clean();
+  void run(const char *title, int windowW, int windowH);
 
   bool running() { return m_bRunning; }
 
-private:
-  bool m_bRunning;
-  // TextureManager *textureManager;
+  void clean();
 };
+
+typedef Game TheGame;

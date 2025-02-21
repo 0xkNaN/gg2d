@@ -25,6 +25,7 @@ public:
       SDL_Renderer *renderer,
       std::string id,
       int x, int y, int w, int h,
+      float scale = 1,
       int currR = 0, int currF = 0,
       SDL_RendererFlip flip = SDL_FLIP_NONE);
 
